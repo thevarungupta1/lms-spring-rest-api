@@ -37,7 +37,7 @@ public class SecurityConfig {
 //                                .anyRequest().permitAll()
                                         .requestMatchers(HttpMethod.GET, "/api/auth/**").permitAll()
                                         .requestMatchers(HttpMethod.POST, "/api/auth/**").permitAll()
-                                        .requestMatchers("/api/courses").hasAuthority("ADMIN")
+                                        .requestMatchers(HttpMethod.POST,"/api/courses").hasAuthority("ADMIN")
                                         .anyRequest().authenticated()
                 ).exceptionHandling(ex -> ex.authenticationEntryPoint(authenticationEntryPoint))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
